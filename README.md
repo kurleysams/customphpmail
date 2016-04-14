@@ -6,7 +6,6 @@ This Emailer consist of most basic form of sending email with validation (Withou
 
 Main features include
 
-
 On Page validation of missed fields:
 ![validation](https://cloud.githubusercontent.com/assets/15234249/14495756/78856d66-01ae-11e6-85ca-92028f22e42a.JPG)
 
