@@ -14,44 +14,44 @@ if(isset($_POST['name'], $_POST['email'], $_POST['message'])){
 		'email' => $_POST['email'],
 		'message' => $_POST['message']
 	);
-	
+
 	foreach($fields as $field => $data){
 		if(empty($data)){
 			$errors[] = 'The '.$field.' field is required';
 		}
 	}
-	
+
 	if(empty($errors)){
 		$m= new PHPMailer;
 		$m->isSMTP();
 		$m->SMTPAuth = true;
-		
+
 		$m->Host = 'smtp.gmail.com';
-		$m->Username = 'youremail@gmail.com';
+		$m->Username = 'youremail2@gmail.com';
 		$m->Password = 'yourpass';
 		$m->SMTPSecure = 'tls';
 		$m->Port = 587;
-		
+
 		$m->isHTML();
-		
+
 		$m->Subject = 'Contact form submitted';
 		$m->Body = 'From: '.$fields['name'].' ('.$fields['email'].')<p>'.$fields['message'].'</p>';
-		
+
 		$m->FromName = 'Contact';
-		
+
 		/*$m->AddReplyTo($fields['email'], $fields['name']);*/
-		
+
 		$m->AddAddress('youremail@gmail.com', 'My Name');
-		
+
 		if($m->send()){
 			$errors[] = 'Email Sent Successfully';
 			unset($fields);
-		} 
+		}
 		else {
 			$errors[] = 'Something Went Wrong';
 		}
 	}
-} 
+}
 else{
 	$errors[] = 'something went wrong';
 }
