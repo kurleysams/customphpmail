@@ -4,7 +4,7 @@
 
 session_start();
 
-require_once '../phpmailer/PHPMailerAutoload.php';
+require_once '/phpmailer/PHPMailerAutoload.php';
 
 $errors = array();
 
@@ -27,7 +27,7 @@ if(isset($_POST['name'], $_POST['email'], $_POST['message'])){
 		$m->SMTPAuth = true;
 
 		$m->Host = 'smtp.gmail.com';
-		$m->Username = 'youremail2@gmail.com';
+		$m->Username = 'yourmail@gmail.com';
 		$m->Password = 'yourpass';
 		$m->SMTPSecure = 'tls';
 		$m->Port = 587;
@@ -41,7 +41,7 @@ if(isset($_POST['name'], $_POST['email'], $_POST['message'])){
 
 		/*$m->AddReplyTo($fields['email'], $fields['name']);*/
 
-		$m->AddAddress('youremail@gmail.com', 'My Name');
+		$m->AddAddress('yourmail@gmail.com', 'My Name');
 
 		if($m->send()){
 			$errors[] = 'Email Sent Successfully';
@@ -59,6 +59,6 @@ else{
 $_SESSION['errors'] = $errors;
 $_SESSION['fields'] = $fields;
 
-header('Location: index.php');
+header('Location:http://localhost/test/sample-page/'); /* Location to Wordpress Template */
 
 ?>
